@@ -1,6 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 const Navbar = () => {
+  const { theme, setTheme } = useContext(AuthContext);
+  const handleTheme = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
   return (
     <nav className="sticky top-0 bg-[#00989E] dark:bg-gray-800 font-bold text-white py-3 z-50">
       <header className="p-4 dark:bg-gray-800 dark:text-white ">
@@ -87,6 +97,7 @@ const Navbar = () => {
               </svg>
               <input
                 type="checkbox"
+                onChange={handleTheme}
                 value="synthwave"
                 className="toggle theme-controller"
               />
