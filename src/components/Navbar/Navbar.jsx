@@ -67,7 +67,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="sticky top-0 bg-[#00989E] dark:bg-gray-800 font-bold text-white py-3 z-50">
+    <nav className="sticky top-0 bg-[#00989E] dark:bg-gray-800 font-bold text-white md:py-3 z-50">
       <Toaster />
       <header className="p-4 dark:bg-gray-800 dark:text-white ">
         <div className="container flex justify-between h-16 mx-auto">
