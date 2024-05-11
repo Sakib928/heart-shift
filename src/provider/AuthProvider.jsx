@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth/cordova";
@@ -38,6 +39,11 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  const userLogout = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+
   useEffect(() => {
     localStorage.setItem("Theme", theme);
     const localTheme = localStorage.getItem("Theme");
@@ -49,8 +55,6 @@ const AuthProvider = ({ children }) => {
       if (user) {
         setUser(user);
         setLoading(false);
-      } else {
-        alert("user is not here");
       }
     });
     return () => unsubscribe;
@@ -66,6 +70,7 @@ const AuthProvider = ({ children }) => {
     setReload,
     theme,
     setTheme,
+    userLogout,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

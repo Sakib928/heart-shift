@@ -2,8 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 const Navbar = () => {
-  const { theme, setTheme } = useContext(AuthContext);
+  const { user, setTheme, userLogout, loading } = useContext(AuthContext);
   const handleTheme = (e) => {
     if (e.target.checked) {
       setTheme("dark");
@@ -11,8 +12,63 @@ const Navbar = () => {
       setTheme("light");
     }
   };
+
+  console.log(user);
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    userLogout().then(toast.success("Logged Out"));
+  };
+
+  const noUserNav = (
+    <>
+      <button className="btn btn-outline text-white ml-6">
+        <Link to={"/login"}>Sign in</Link>
+      </button>
+      <button className="btn btn-outline text-white font-semibold dark:bg-violet-600 dark:text-gray-50 ml-6">
+        <Link to={"/register"}>Sign up</Link>
+      </button>
+    </>
+  );
+
+  const userNav = (
+    <>
+      <div>
+        <div className="dropdown dropdown-end">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle avatar"
+          >
+            <div className="w-10 rounded-full">
+              <img
+                data-tooltip-id="my-tooltip-1"
+                alt="Tailwind CSS Navbar component"
+                src={user?.photoURL}
+              />
+            </div>
+          </div>
+          <ul
+            tabIndex={0}
+            className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a className="font-bold text-black  ">
+                User : {user?.displayName}
+              </a>
+              <a onClick={handleLogout} className="font-bold text-red-600">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <nav className="sticky top-0 bg-[#00989E] dark:bg-gray-800 font-bold text-white py-3 z-50">
+      <Toaster />
       <header className="p-4 dark:bg-gray-800 dark:text-white ">
         <div className="container flex justify-between h-16 mx-auto">
           <Link
@@ -115,29 +171,85 @@ const Navbar = () => {
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
             </label>
-            <button className="btn btn-outline text-white ml-6">
-              <Link to={"/login"}>Sign in</Link>
-            </button>
-            <button className="btn btn-outline text-white font-semibold dark:bg-violet-600 dark:text-gray-50 ml-6">
-              <Link to={"/register"}>Sign up</Link>
-            </button>
+            <div>{!loading && user ? userNav : noUserNav}</div>
           </div>
-          <button className="p-4 lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-6 h-6 dark:text-gray-800"
+          <div className="dropdown dropdown-end lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn m-1 bg-transparent text-white border-none"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6 dark:text-gray-800"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-black"
+            >
+              <li className="flex">
+                <NavLink
+                  to={"/"}
+                  rel="noopener noreferrer"
+                  href="#"
+                  className="flex items-center px-4 -mb-1 border-b-2 dark:border- dark:text-violet-600 dark:border-violet-600"
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li className="flex">
+                <NavLink
+                  to={"/queries"}
+                  rel="noopener noreferrer"
+                  href="#"
+                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                >
+                  Queries
+                </NavLink>
+              </li>
+              <li className="flex">
+                <NavLink
+                  to={"/recommendations"}
+                  rel="noopener noreferrer"
+                  href="#"
+                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                >
+                  Recommendations
+                </NavLink>
+              </li>
+              <li className="flex">
+                <NavLink
+                  to={"/myQueries"}
+                  rel="noopener noreferrer"
+                  href="#"
+                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                >
+                  My Queries
+                </NavLink>
+              </li>
+              <li className="flex">
+                <NavLink
+                  to={"/myRecommendations"}
+                  rel="noopener noreferrer"
+                  href="#"
+                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                >
+                  My Recommendations
+                </NavLink>
+              </li>
+            </ul>
+          </div>
         </div>
       </header>
     </nav>
