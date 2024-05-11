@@ -9,3 +9,7 @@ body {
     font-family: "Reddit Sans", sans-serif;
     font-optical-sizing: auto;
 }
+
+.active {
+    border-color: blue;
+}
