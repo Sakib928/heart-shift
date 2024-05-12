@@ -9,8 +9,8 @@ import { Autoplay } from "swiper/modules";
 const Banner = () => {
   return (
     <div className="h-auto">
-      <div className="absolute  z-10 text-white left-[40px] md:left-[80px] lg:left-1/4 top-1/4 md:top-1/2 md:space-y-4">
-        <h1 className="leading-relaxed anton text-4xl md:text-6xl lg:text-7xl font-bold">
+      <div className="absolute z-10 text-white left-[40px] md:left-[80px] lg:left-1/4 top-[100px] md:top-1/4 md:space-y-4">
+        <h1 className="lg:leading-relaxed anton text-4xl md:text-6xl lg:text-7xl font-bold">
           Discover your <br />{" "}
           <span className="text-[#00989E]">alternative</span> product
         </h1>
