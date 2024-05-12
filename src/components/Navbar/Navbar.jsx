@@ -13,7 +13,7 @@ const Navbar = () => {
     }
   };
 
-  console.log(user);
+  // console.log(user);
 
   const handleLogout = (e) => {
     e.preventDefault();
