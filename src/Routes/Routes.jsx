@@ -7,6 +7,7 @@ import Queries from "../pages/Queries/Queries";
 import Recommendations from "../pages/Recommendations/Recommendations";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -18,11 +19,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myQueries",
-        element: <MyQueries></MyQueries>,
+        element: (
+          <PrivateRoute>
+            <MyQueries></MyQueries>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myRecommendations",
-        element: <MyRecommendations></MyRecommendations>,
+        element: (
+          <PrivateRoute>
+            <MyRecommendations></MyRecommendations>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/queries",
@@ -30,7 +39,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/recommendations",
-        element: <Recommendations></Recommendations>,
+        element: (
+          <PrivateRoute>
+            <Recommendations></Recommendations>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

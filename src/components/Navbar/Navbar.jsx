@@ -104,36 +104,43 @@ const Navbar = () => {
                 Queries
               </NavLink>
             </li>
-            <li className="flex">
-              <NavLink
-                to={"/recommendations"}
-                rel="noopener noreferrer"
-                href="#"
-                className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-              >
-                Recommendations
-              </NavLink>
-            </li>
-            <li className="flex">
-              <NavLink
-                to={"/myQueries"}
-                rel="noopener noreferrer"
-                href="#"
-                className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-              >
-                My Queries
-              </NavLink>
-            </li>
-            <li className="flex">
-              <NavLink
-                to={"/myRecommendations"}
-                rel="noopener noreferrer"
-                href="#"
-                className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-              >
-                My Recommendations
-              </NavLink>
-            </li>
+            {!loading && user ? (
+              <>
+                {" "}
+                <li className="flex">
+                  <NavLink
+                    to={"/recommendations"}
+                    rel="noopener noreferrer"
+                    href="#"
+                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                  >
+                    Recommendations
+                  </NavLink>
+                </li>
+                <li className="flex">
+                  <NavLink
+                    to={"/myQueries"}
+                    rel="noopener noreferrer"
+                    href="#"
+                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                  >
+                    My Queries
+                  </NavLink>
+                </li>
+                <li className="flex">
+                  <NavLink
+                    to={"/myRecommendations"}
+                    rel="noopener noreferrer"
+                    href="#"
+                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                  >
+                    My Recommendations
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              ""
+            )}
           </ul>
           <div className="items-center flex-shrink-0 hidden lg:flex">
             <label className="flex cursor-pointer gap-2">
