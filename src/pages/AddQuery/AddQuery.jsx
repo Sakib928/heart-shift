@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddQuery = () => {
   const { user } = useContext(AuthContext);
@@ -39,11 +40,18 @@ const AddQuery = () => {
       recommendationCount: 0,
     };
     console.log(query);
-    axios.post("http://localhost:5000/addQuery", query);
+    axios.post("http://localhost:5000/addQuery", query).then((res) => {
+      console.log(res.data);
+      if (res.data.acknowledged) {
+        toast.success("Added query successfully");
+        form.reset();
+      }
+    });
   };
 
   return (
     <section className="p-6 dark:bg-gray-100 dark:text-gray-900">
+      <Toaster />
       <form
         onSubmit={handleAddQuery}
         noValidate=""
@@ -112,7 +120,7 @@ const AddQuery = () => {
                 />
               </label>
             </div>
-            <div className="col-span-full">
+            <div className="col-span-full ">
               <label htmlFor="bio" className="text-sm font-bold">
                 Boycotting Reason Details
               </label>
@@ -120,7 +128,7 @@ const AddQuery = () => {
                 name="boycottReason"
                 id="bio"
                 placeholder=""
-                className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300 input input-bordered"
+                className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300 input input-bordered h-[80px]"
               ></textarea>
             </div>
             <div className="col-span-full">
