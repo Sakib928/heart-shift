@@ -9,14 +9,14 @@ import MyQuery from "./MyQuery";
 const MyQueries = () => {
   const { user } = useContext(AuthContext);
   const [myQueries, setMyQueries] = useState([]);
-  console.log(myQueries);
+  // console.log(myQueries);
   useEffect(() => {
     axios
       .get(`http://localhost:5000/myQueries/?email=${user.email}`)
       .then((res) => {
         setMyQueries(res.data);
       });
-  }, [user.email]);
+  }, [user.email, myQueries]);
   const noData = (
     <>
       <Lottie
@@ -71,7 +71,14 @@ const MyQueries = () => {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {myQueries.map((query) => {
-          return <MyQuery key={query._id} query={query}></MyQuery>;
+          return (
+            <MyQuery
+              key={query._id}
+              query={query}
+              myQueries={myQueries}
+              setMyQueries={setMyQueries}
+            ></MyQuery>
+          );
         })}
       </div>
     </div>

@@ -9,6 +9,8 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import AddQuery from "../pages/AddQuery/AddQuery";
+import UpdatePage from "../pages/UpdatePage/UpdatePage";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -57,6 +59,14 @@ export const router = createBrowserRouter([
       {
         path: "/addQuery",
         element: <AddQuery></AddQuery>,
+      },
+      {
+        path: "/productUpdate/:id",
+        element: <UpdatePage></UpdatePage>,
+      },
+      {
+        path: "/productDetails/:id",
+        element: <ProductDetails></ProductDetails>,
       },
     ],
   },

@@ -1,9 +1,61 @@
-const MyQuery = ({ query }) => {
+import axios from "axios";
+import { AiOutlineDelete } from "react-icons/ai";
+import { LuClipboardEdit } from "react-icons/lu";
+import { TbListDetails } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+const MyQuery = ({ query, MyQueries, setMyQueries }) => {
   //   console.log(query);
-  const { productImage, productName, queryTitle } = query;
+  const navigate = useNavigate();
+  const id = query._id;
+
+  const handleDetails = () => {
+    navigate(`/productDetails/${query._id}`);
+  };
+
+  const handleUpdate = () => {
+    console.log(query._id);
+  };
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:5000/product/${id}`).then((res) => {
+          if (res.data.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your item has been deleted.",
+              icon: "success",
+            });
+            const remaining = MyQueries.filter((item) => item._id !== id);
+            setMyQueries(remaining);
+          }
+        });
+      }
+    });
+  };
+
+  const {
+    productImage,
+    productName,
+    queryTitle,
+    userPhoto,
+    userName,
+    addingDate,
+    boycottReason,
+  } = query;
   return (
     <div>
-      <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 mx-auto mt-8">
+      <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 mx-auto mt-8 h-full">
         <img
           className="object-cover w-full h-64 "
           src={productImage}
@@ -23,33 +75,40 @@ const MyQuery = ({ query }) => {
               {queryTitle}
             </p>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-              parturient et sem ipsum volutpat vel. Natoque sem et aliquam
-              mauris egestas quam volutpat viverra. In pretium nec senectus
-              erat. Et malesuada lobortis.
+              {boycottReason}
             </p>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 flex flex-col md:flex-row justify-between">
             <div className="flex items-center">
               <div className="flex items-center">
                 <img
                   className="object-cover h-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
+                  src={userPhoto}
                   alt="Avatar"
                 />
-                <a
-                  href="#"
+                <p
                   className="mx-2 font-semibold text-gray-700 dark:text-gray-200"
                   tabIndex="0"
                   role="link"
                 >
-                  Jone Doe
-                </a>
+                  {userName}
+                </p>
               </div>
               <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">
-                21 SEP 2015
+                {addingDate}
               </span>
+            </div>
+            <div className="flex gap-2">
+              <button className="btn text-lg bg-[#00989E] text-white hover:bg-[#38B8BC]">
+                <TbListDetails onClick={handleDetails} />
+              </button>
+              <button className="btn text-lg bg-[#00989E] text-white hover:bg-[#38B8BC]">
+                <LuClipboardEdit onClick={handleUpdate} />
+              </button>
+              <button className="btn text-lg bg-[#00989E] text-white hover:bg-red-500">
+                <AiOutlineDelete onClick={handleDelete} />
+              </button>
             </div>
           </div>
         </div>
