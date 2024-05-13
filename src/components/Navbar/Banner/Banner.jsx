@@ -34,7 +34,7 @@ const Banner = () => {
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         modules={[Autoplay]}
         className="mySwiper"
-        loop:infinity
+        loop:infinity={toString()}
       >
         <SwiperSlide className="text-center">
           <img className="darkened-image" src={slide1} alt="" />

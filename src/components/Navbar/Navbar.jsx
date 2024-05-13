@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Navigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -18,6 +18,7 @@ const Navbar = () => {
   const handleLogout = (e) => {
     e.preventDefault();
     userLogout().then(toast.success("Logged Out"));
+    Navigate("/");
   };
 
   const noUserNav = (

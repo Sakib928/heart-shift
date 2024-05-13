@@ -13,7 +13,7 @@ const RecentQuery = ({ card }) => {
   } = card;
   return (
     <div>
-      <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 mx-auto border-2 ">
+      <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 mx-auto border-2 h-full">
         <img
           className="object-cover object-center w-full h-56"
           src={productImage}
@@ -44,7 +44,9 @@ const RecentQuery = ({ card }) => {
 
           <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
             <MdOutlineBrandingWatermark />
-            <h1 className="px-2 text-sm font-bold">{productBrand}</h1>
+            <h1 className="px-2 text-sm font-bold">
+              Brand Name : {productBrand}
+            </h1>
           </div>
 
           <div className="flex items-center mt-8 space-x-4">
