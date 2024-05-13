@@ -15,7 +15,7 @@ const MyQuery = ({ query, MyQueries, setMyQueries }) => {
   };
 
   const handleUpdate = () => {
-    console.log(query._id);
+    navigate(`/productUpdate/${id}`);
   };
 
   const handleDelete = () => {
