@@ -100,14 +100,23 @@ const MyQuery = ({ query, MyQueries, setMyQueries }) => {
               </span>
             </div>
             <div className="flex gap-2">
-              <button className="btn text-lg bg-[#00989E] text-white hover:bg-[#38B8BC]">
-                <TbListDetails onClick={handleDetails} />
+              <button
+                onClick={handleDetails}
+                className="btn text-lg bg-[#00989E] text-white hover:bg-[#38B8BC]"
+              >
+                <TbListDetails />
               </button>
-              <button className="btn text-lg bg-[#00989E] text-white hover:bg-[#38B8BC]">
-                <LuClipboardEdit onClick={handleUpdate} />
+              <button
+                onClick={handleUpdate}
+                className="btn text-lg bg-[#00989E] text-white hover:bg-[#38B8BC]"
+              >
+                <LuClipboardEdit />
               </button>
-              <button className="btn text-lg bg-[#00989E] text-white hover:bg-red-500">
-                <AiOutlineDelete onClick={handleDelete} />
+              <button
+                onClick={handleDelete}
+                className="btn text-lg bg-[#00989E] text-white hover:bg-red-500"
+              >
+                <AiOutlineDelete />
               </button>
             </div>
           </div>

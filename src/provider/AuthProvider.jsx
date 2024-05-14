@@ -47,7 +47,13 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("Theme", theme);
     const localTheme = localStorage.getItem("Theme");
-    document.querySelector("html").setAttribute("data-theme", localTheme);
+    if (localTheme === "dark") {
+      document.querySelector("html").classList.remove("light");
+      document.querySelector("html").classList.add("dark");
+    } else {
+      document.querySelector("html").classList.remove("dark");
+      document.querySelector("html").classList.add("light");
+    }
   }, [theme]);
 
   useEffect(() => {

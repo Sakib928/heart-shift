@@ -12,6 +12,7 @@ body {
 
 .active {
     border-color: blue;
+    color: blue;
 }
 
 .darkened-image {

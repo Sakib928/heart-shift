@@ -24,12 +24,14 @@ const Navbar = () => {
 
   const noUserNav = (
     <>
-      <button className="btn btn-outline text-white ml-6">
-        <Link to={"/login"}>Sign in</Link>
-      </button>
-      <button className="btn btn-outline text-white font-semibold dark:bg-violet-600 dark:text-gray-50 ml-6">
-        <Link to={"/register"}>Sign up</Link>
-      </button>
+      <Link to={"/login"}>
+        <button className="btn btn-outline text-white ml-6">Sign in</button>
+      </Link>
+      <Link to={"/register"}>
+        <button className="btn btn-outline text-white font-semibold dark:bg-violet-600 dark:text-gray-50 ml-6">
+          Sign up
+        </button>
+      </Link>
     </>
   );
 
@@ -91,7 +93,7 @@ const Navbar = () => {
                 to={"/"}
                 rel="noopener noreferrer"
                 href="#"
-                className="flex items-center px-4 -mb-1 border-b-2 dark:border- dark:text-violet-600 dark:border-violet-600"
+                className="flex items-center px-4 -mb-1 border-b-2"
               >
                 Home
               </NavLink>

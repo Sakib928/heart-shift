@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddQuery from "../pages/AddQuery/AddQuery";
 import UpdatePage from "../pages/UpdatePage/UpdatePage";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
+import AllRecommendations from "../pages/AllRecommendations/AllRecommendations";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
       {
         path: "/productDetails/:id",
         element: <ProductDetails></ProductDetails>,
+      },
+      {
+        path: "/viewRecommendations/:id",
+        element: <AllRecommendations></AllRecommendations>,
       },
     ],
   },

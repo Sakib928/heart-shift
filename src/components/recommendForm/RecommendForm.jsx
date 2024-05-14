@@ -1,79 +1,80 @@
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import { useNavigate, useParams } from "react-router-dom";
 
-const UpdatePage = () => {
-  const userID = useParams();
-  console.log(userID.id);
-  const navigate = useNavigate();
-  const handleAddQuery = (e) => {
+const RecommendForm = ({ product }) => {
+  const { user } = useContext(AuthContext);
+  const handleAddRecommendation = (e) => {
     e.preventDefault();
     const form = e.target;
-    const productName = form.productName.value;
-    const productBrand = form.productBrand.value;
-    const productImage = form.productImage.value;
-    const queryTitle = form.queryTitle.value;
-    const boycottReason = form.boycottReason.value;
-
-    const query = {
-      productName,
-      productBrand,
-      productImage,
+    const rTitle = form.rTitle.value;
+    const rProductName = form.rProductName.value;
+    const rImage = form.rImage.value;
+    const rReason = form.rReason.value;
+    const linkID = product._id;
+    const queryTitle = product.queryTitle;
+    const productName = product.productName;
+    const userName = product.userName;
+    const userEmail = product.userEmail;
+    const rEmail = user.email;
+    const rName = user.displayName;
+    const addingTime = new Date();
+    const year = addingTime.getFullYear();
+    const month = String(addingTime.getMonth() + 1).padStart(2, "0");
+    const day = String(addingTime.getDate()).padStart(2, "0");
+    const rAddingDate = `${year}-${month}-${day}`;
+    const rProduct = {
+      rTitle,
+      rProductName,
+      rImage,
+      rReason,
+      linkID,
       queryTitle,
-      boycottReason,
+      productName,
+      userName,
+      userEmail,
+      rEmail,
+      rName,
+      rAddingDate,
     };
-    console.log(query);
+    console.log(rProduct);
     axios
-      .patch(`http://localhost:5000/updateProduct/${userID.id}`, query)
+      .post("http://localhost:5000/recommendProduct", rProduct)
       .then((res) => {
         console.log(res.data);
-        if (res.data.modifiedCount) {
-          toast.success("product updated successfully");
-          navigate(-1);
-        } else {
-          toast.error("product update failed");
+        if (res.data.insertedId) {
+          toast.success("added recommendation");
+          form.reset();
         }
-        form.reset();
       });
   };
 
   return (
-    <section className="p-6 dark:bg-gray-100 dark:text-gray-900">
+    <section className="p-6 dark:bg-gray-800 dark:text-gray-900 max-w-5xl mx-auto mt-6 rounded-lg">
       <Toaster />
       <form
-        onSubmit={handleAddQuery}
+        onSubmit={handleAddRecommendation}
         noValidate=""
         action=""
         className="container flex flex-col mx-auto space-y-12"
       >
-        <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-50">
+        <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-800 dark:text-white">
           <div className="space-y-2 col-span-full lg:col-span-1">
-            <p className="font-bold text-3xl ">Update Product</p>
-            <p className="text-sm">
-              Update your added product in the boycott list with valid reasons
+            <p className="font-bold text-3xl ">
+              Recommend an alternative Product
             </p>
           </div>
           <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
             <div className="col-span-full sm:col-span-3">
               <label className="form-control w-full ">
                 <div className="label">
-                  <span className="label-text font-bold">Product Name</span>
+                  <span className="label-text font-bold">
+                    Recommendation Title
+                  </span>
                 </div>
                 <input
-                  name="productName"
-                  type="text"
-                  placeholder="Type here"
-                  className="input input-bordered w-full "
-                />
-              </label>
-            </div>
-            <div className="col-span-full sm:col-span-3">
-              <label className="form-control w-full ">
-                <div className="label">
-                  <span className="label-text font-bold">Product Brand</span>
-                </div>
-                <input
-                  name="productBrand"
+                  name="rTitle"
                   type="text"
                   placeholder="Type here"
                   className="input input-bordered w-full "
@@ -84,24 +85,26 @@ const UpdatePage = () => {
               <label className="form-control w-full ">
                 <div className="label">
                   <span className="label-text font-bold">
-                    Product Image-URL
+                    Recommended product Name
                   </span>
                 </div>
                 <input
-                  name="productImage"
+                  name="rProductName"
                   type="text"
                   placeholder="Type here"
                   className="input input-bordered w-full "
                 />
               </label>
             </div>
-            <div className="col-span-full sm:col-span-3">
+            <div className="col-span-full">
               <label className="form-control w-full ">
                 <div className="label">
-                  <span className="label-text font-bold">Query TItle</span>
+                  <span className="label-text font-bold">
+                    Recommended Product Image
+                  </span>
                 </div>
                 <input
-                  name="queryTitle"
+                  name="rImage"
                   type="text"
                   placeholder="Type here"
                   className="input input-bordered w-full "
@@ -110,10 +113,10 @@ const UpdatePage = () => {
             </div>
             <div className="col-span-full ">
               <label htmlFor="bio" className="text-sm font-bold">
-                Boycotting Reason Details
+                Recommendation reason
               </label>
               <textarea
-                name="boycottReason"
+                name="rReason"
                 id="bio"
                 placeholder=""
                 className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300 input input-bordered h-[80px]"
@@ -124,7 +127,7 @@ const UpdatePage = () => {
                 type="submit"
                 className="btn btn-block  bg-[#00989E] border-none text-white hover:bg-[#2BBFC3]"
               >
-                Update Query
+                Add Recommendation
               </button>
             </div>
           </div>
@@ -134,4 +137,4 @@ const UpdatePage = () => {
   );
 };
 
-export default UpdatePage;
+export default RecommendForm;

@@ -1,48 +1,25 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { FaRegHandPointRight } from "react-icons/fa";
-import { useNavigate, useParams } from "react-router-dom";
-import RecommendForm from "../../components/recommendForm/RecommendForm";
-
-const ProductDetails = () => {
-  const details = useParams();
-  //   console.log(details.id);
-  const [product, setProduct] = useState([]);
-  console.log(product);
+import { useNavigate } from "react-router-dom";
+const QueryCard = ({ query }) => {
   const navigate = useNavigate();
-
-  const handleViewRecs = () => {
-    console.log(details.id);
-    navigate(`/viewRecommendations/${details.id}`);
+  const handleDetails = () => {
+    navigate(`/productDetails/${query._id}`);
   };
 
   const {
     productImage,
-    productBrand,
-    queryTitle,
     productName,
-    boycottReason,
-    addingDate,
-    userName,
+    queryTitle,
     userPhoto,
+    userName,
+    addingDate,
+    boycottReason,
     recommendationCount,
-    // userEmail,
-  } = product;
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/productDetails/${details.id}`)
-      .then((res) => {
-        console.log(res.data);
-        setProduct(res.data);
-      });
-  }, [details.id]);
-
+  } = query;
   return (
     <div>
-      <div className="max-w-5xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 mx-auto">
+      <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 mx-auto mt-8 h-full">
         <img
-          className="object-cover w-full h-100"
+          className="object-cover w-full h-64 "
           src={productImage}
           alt="Article"
         />
@@ -50,11 +27,7 @@ const ProductDetails = () => {
         <div className="p-6">
           <div>
             <span className="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">
-              {productBrand}
-            </span>{" "}
-            <br />
-            <span className="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">
-              Product : {productName}
+              {productName}
             </span>
             <p
               className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline"
@@ -68,7 +41,7 @@ const ProductDetails = () => {
             </p>
           </div>
 
-          <div className="mt-4 flex justify-between">
+          <div className="mt-4 flex flex-col md:flex-row justify-between">
             <div className="flex items-center">
               <div className="flex items-center">
                 <img
@@ -88,18 +61,22 @@ const ProductDetails = () => {
                 {addingDate}
               </span>
             </div>
-            <div>
-              <button onClick={handleViewRecs} className="btn">
-                <FaRegHandPointRight />
+            <div className="flex gap-2">
+              <button
+                onClick={handleDetails}
+                className="btn text-lg bg-[#00989E] text-white hover:bg-[#38B8BC]"
+              >
+                recommend
+              </button>
+              <button className="btn text-lg bg-[#00989E] text-white hover:bg-red-500">
                 recommendations : {recommendationCount}
               </button>
             </div>
           </div>
         </div>
       </div>
-      <RecommendForm product={product}></RecommendForm>
     </div>
   );
 };
 
-export default ProductDetails;
+export default QueryCard;
