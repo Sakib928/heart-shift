@@ -12,11 +12,35 @@ const Queries = () => {
     });
   }, []);
   // console.log(allQueries);
+  const [cols, setCols] = useState(1);
+  const handleView = (col) => {
+    setCols(col);
+  };
   return (
     <div>
-      {allQueries.map((query) => {
-        return <QueryCard key={query._id} query={query}></QueryCard>;
-      })}
+      <div className="text-center mt-8">
+        <div className="dropdown mx-auto">
+          <div tabIndex={0} role="button" className="btn m-1">
+            View
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li onClick={() => handleView(1)}>
+              <a>One Column</a>
+            </li>
+            <li onClick={() => handleView(2)}>
+              <a>Two Column</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className={`grid grid-cols-1 lg:grid-cols-${cols} gap-4`}>
+        {allQueries.map((query) => {
+          return <QueryCard key={query._id} query={query}></QueryCard>;
+        })}
+      </div>
     </div>
   );
 };
