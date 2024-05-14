@@ -49,10 +49,12 @@ const AuthProvider = ({ children }) => {
     const localTheme = localStorage.getItem("Theme");
     if (localTheme === "dark") {
       document.querySelector("html").classList.remove("light");
+      document.querySelector("html").setAttribute("data-theme", localTheme);
       document.querySelector("html").classList.add("dark");
     } else {
       document.querySelector("html").classList.remove("dark");
       document.querySelector("html").classList.add("light");
+      document.querySelector("html").setAttribute("data-theme", localTheme);
     }
   }, [theme]);
 

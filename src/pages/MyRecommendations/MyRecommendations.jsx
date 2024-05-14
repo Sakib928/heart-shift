@@ -45,7 +45,9 @@ const MyRecommendations = () => {
                 }).then((result) => {
                   if (result.isConfirmed) {
                     axios
-                      .delete(`http://localhost:5000/recommendation/${_id}`)
+                      .delete(
+                        `http://localhost:5000/recommendation/${_id}?link=${item.linkID}`
+                      )
                       .then((res) => {
                         if (res.data.deletedCount) {
                           Swal.fire({

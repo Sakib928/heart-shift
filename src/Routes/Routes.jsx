@@ -12,10 +12,12 @@ import AddQuery from "../pages/AddQuery/AddQuery";
 import UpdatePage from "../pages/UpdatePage/UpdatePage";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import AllRecommendations from "../pages/AllRecommendations/AllRecommendations";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

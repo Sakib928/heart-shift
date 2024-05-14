@@ -7,6 +7,9 @@ import TinyBanner from "../../components/Navbar/Banner/TinyBanner";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import RecentQueries from "../../components/RecentQueries/RecentQueries";
+import Blogs from "../../components/Blogs/Blogs";
+import Testimonial from "../../components/Testimonials/Testimonial";
+import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
   const [loadedCards, setLoadedCards] = useState([]);
@@ -23,6 +26,9 @@ const Home = () => {
       <Banner></Banner>
       <TinyBanner></TinyBanner>
       <RecentQueries loadedCards={loadedCards}></RecentQueries>
+      <Blogs></Blogs>
+      <Testimonial></Testimonial>
+      <Footer></Footer>
     </div>
   );
 };

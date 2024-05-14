@@ -57,7 +57,7 @@ const Navbar = () => {
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a className="font-bold text-black  ">
+              <a className="font-bold text-black dark:text-white">
                 User : {user?.displayName}
               </a>
               <a onClick={handleLogout} className="font-bold text-red-600">
@@ -146,7 +146,7 @@ const Navbar = () => {
               ""
             )}
           </ul>
-          <div className="items-center flex-shrink-0 hidden lg:flex">
+          <div className="items-center flex-shrink-0 flex">
             <label className="flex cursor-pointer gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -194,7 +194,7 @@ const Navbar = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                stroke="white"
                 className="w-6 h-6 dark:text-gray-800"
               >
                 <path
@@ -207,7 +207,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-black"
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-black dark:text-white"
             >
               <li className="flex">
                 <NavLink
