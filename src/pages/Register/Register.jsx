@@ -19,18 +19,18 @@ const Register = () => {
     const email = form.get("email");
     const photourl = form.get("photourl");
     const password = form.get("password");
-    console.log(name, email, photourl, password);
+    // console.log(name, email, photourl, password);
     createUser(email, password)
-      .then((res) => {
-        console.log(res.user);
+      .then(() => {
+        // console.log(res.user);
         toast.success("Successfully registerd");
         profileUpdate(name, photourl);
         setTimeout(() => {
           setReload(!reload);
         }, 2000);
       })
-      .catch((err) => {
-        console.log(err.message);
+      .catch(() => {
+        // console.log(err.message);
         toast.error("Already have an account");
       });
   };

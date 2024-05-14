@@ -39,11 +39,11 @@ const AddQuery = () => {
       addingDate,
       recommendationCount: 0,
     };
-    console.log(query);
+    // console.log(query);
     axios
       .post("https://assignment-11-server-xi-nine.vercel.app/addQuery", query)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.acknowledged) {
           toast.success("Added query successfully");
           form.reset();

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const UpdatePage = () => {
   const userID = useParams();
-  console.log(userID.id);
+  //   console.log(userID.id);
   const navigate = useNavigate();
   const handleAddQuery = (e) => {
     e.preventDefault();
@@ -22,14 +22,14 @@ const UpdatePage = () => {
       queryTitle,
       boycottReason,
     };
-    console.log(query);
+    // console.log(query);
     axios
       .patch(
         `https://assignment-11-server-xi-nine.vercel.app/updateProduct/${userID.id}`,
         query
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.modifiedCount) {
           toast.success("product updated successfully");
           navigate(-1);

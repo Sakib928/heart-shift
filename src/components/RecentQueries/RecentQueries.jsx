@@ -2,7 +2,7 @@ import RecentQuery from "./RecentQuery";
 
 const RecentQueries = ({ loadedCards }) => {
   const showCards = loadedCards.slice(0, 6);
-  console.log(showCards);
+//   console.log(showCards);
   return (
     <div>
       <div>

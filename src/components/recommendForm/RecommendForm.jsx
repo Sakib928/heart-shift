@@ -38,7 +38,7 @@ const RecommendForm = ({ product }) => {
       rName,
       rAddingDate,
     };
-    console.log(rProduct);
+    // console.log(rProduct);
     axios
       .post(
         "https://assignment-11-server-xi-nine.vercel.app/recommendProduct",
