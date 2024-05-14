@@ -8,10 +8,14 @@ const Recommendations = () => {
   const [recForMe, setRecForMe] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/forMe?email=${userEmail}`).then((res) => {
-      console.log(res.data);
-      setRecForMe(res.data);
-    });
+    axios
+      .get(
+        `https://assignment-11-server-xi-nine.vercel.app/forMe?email=${userEmail}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setRecForMe(res.data);
+      });
   }, [userEmail]);
 
   return (
@@ -52,7 +56,7 @@ const Recommendations = () => {
                       </div>
                     </td>
                     <td>
-                    {rReason}
+                      {rReason}
                       <br />
                     </td>
 

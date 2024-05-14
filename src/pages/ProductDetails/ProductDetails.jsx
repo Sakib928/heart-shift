@@ -31,7 +31,9 @@ const ProductDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/productDetails/${details.id}`)
+      .get(
+        `https://assignment-11-server-xi-nine.vercel.app/productDetails/${details.id}`
+      )
       .then((res) => {
         console.log(res.data);
         setProduct(res.data);

@@ -24,7 +24,10 @@ const UpdatePage = () => {
     };
     console.log(query);
     axios
-      .patch(`http://localhost:5000/updateProduct/${userID.id}`, query)
+      .patch(
+        `https://assignment-11-server-xi-nine.vercel.app/updateProduct/${userID.id}`,
+        query
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount) {

@@ -29,17 +29,21 @@ const MyQuery = ({ query, MyQueries, setMyQueries }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/product/${id}`).then((res) => {
-          if (res.data.deletedCount) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your item has been deleted.",
-              icon: "success",
-            });
-            const remaining = MyQueries.filter((item) => item._id !== id);
-            setMyQueries(remaining);
-          }
-        });
+        axios
+          .delete(
+            `https://assignment-11-server-xi-nine.vercel.app/product/${id}`
+          )
+          .then((res) => {
+            if (res.data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your item has been deleted.",
+                icon: "success",
+              });
+              const remaining = MyQueries.filter((item) => item._id !== id);
+              setMyQueries(remaining);
+            }
+          });
       }
     });
   };

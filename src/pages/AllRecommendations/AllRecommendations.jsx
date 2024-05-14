@@ -8,7 +8,9 @@ const AllRecommendations = () => {
   const [allRecs, setAllRecs] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/viewRecommendations/${get.id}`)
+      .get(
+        `https://assignment-11-server-xi-nine.vercel.app/viewRecommendations/${get.id}`
+      )
       .then((res) => {
         console.log(res.data);
         setAllRecs(res.data);

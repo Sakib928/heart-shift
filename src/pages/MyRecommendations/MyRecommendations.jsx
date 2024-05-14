@@ -11,7 +11,9 @@ const MyRecommendations = () => {
   console.log(myRecs);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/myRecommendation?email=${matchEmail}`)
+      .get(
+        `https://assignment-11-server-xi-nine.vercel.app/myRecommendation?email=${matchEmail}`
+      )
       .then((res) => {
         // console.log(res.data);
         setMyRecs(res.data);
@@ -46,7 +48,7 @@ const MyRecommendations = () => {
                   if (result.isConfirmed) {
                     axios
                       .delete(
-                        `http://localhost:5000/recommendation/${_id}?link=${item.linkID}`
+                        `https://assignment-11-server-xi-nine.vercel.app/recommendation/${_id}?link=${item.linkID}`
                       )
                       .then((res) => {
                         if (res.data.deletedCount) {
