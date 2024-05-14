@@ -7,8 +7,8 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
+  GoogleAuthProvider,
 } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth/cordova";
 export const AuthContext = createContext();
 const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
