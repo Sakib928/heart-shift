@@ -8,11 +8,11 @@ const ProductDetails = () => {
   const details = useParams();
   //   console.log(details.id);
   const [product, setProduct] = useState([]);
-  console.log(product);
+//   console.log(product);
   const navigate = useNavigate();
 
   const handleViewRecs = () => {
-    console.log(details.id);
+    // console.log(details.id);
     navigate(`/viewRecommendations/${details.id}`);
   };
 
@@ -35,7 +35,7 @@ const ProductDetails = () => {
         `https://assignment-11-server-xi-nine.vercel.app/productDetails/${details.id}`
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setProduct(res.data);
       });
   }, [details.id]);

@@ -13,7 +13,7 @@ const Recommendations = () => {
         `https://assignment-11-server-xi-nine.vercel.app/forMe?email=${userEmail}`
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setRecForMe(res.data);
       });
   }, [userEmail]);

@@ -1,8 +1,11 @@
-# React + Vite
+# Website Name : Heart Shift
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is an alternative product website to share and keep track of companies which are complicit and profiting from human rights violation across the world.
 
-Currently, two official plugins are available:
+# Website Features : 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add a product in the boycotts list with details
+- Keep track of user added products
+- Add recommendation for alternative Products
+- Watch other peoples added products
+- Dark mode switching
