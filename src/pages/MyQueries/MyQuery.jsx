@@ -32,7 +32,7 @@ const MyQuery = ({ query, MyQueries, setMyQueries }) => {
         axios
           .delete(
             `
-http://localhost:5000/product/${id}`
+https://assignment-11-server-xi-nine.vercel.app/product/${id}`
           )
           .then((res) => {
             if (res.data.deletedCount) {

@@ -40,13 +40,15 @@ const AddQuery = () => {
       recommendationCount: 0,
     };
     // console.log(query);
-    axios.post("http://localhost:5000/addQuery", query).then((res) => {
-      // console.log(res.data);
-      if (res.data.acknowledged) {
-        toast.success("Added query successfully");
-        form.reset();
-      }
-    });
+    axios
+      .post("https://assignment-11-server-xi-nine.vercel.app/addQuery", query)
+      .then((res) => {
+        // console.log(res.data);
+        if (res.data.acknowledged) {
+          toast.success("Added query successfully");
+          form.reset();
+        }
+      });
   };
 
   return (

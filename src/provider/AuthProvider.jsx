@@ -64,15 +64,23 @@ const AuthProvider = ({ children }) => {
       const userMail = user?.email;
       const loggedUser = { email: userMail };
       if (user) {
-        axios.post(`http://localhost:5000/jwt`, loggedUser, {
-          withCredentials: true,
-        });
+        axios.post(
+          `https://assignment-11-server-xi-nine.vercel.app/jwt`,
+          loggedUser,
+          {
+            withCredentials: true,
+          }
+        );
         setUser(user);
         setLoading(false);
       } else {
-        axios.post(`http://localhost:5000/logout`, loggedUser, {
-          withCredentials: true,
-        });
+        axios.post(
+          `https://assignment-11-server-xi-nine.vercel.app/logout`,
+          loggedUser,
+          {
+            withCredentials: true,
+          }
+        );
       }
     });
     return () => unsubscribe;

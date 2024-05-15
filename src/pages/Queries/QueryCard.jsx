@@ -68,7 +68,7 @@ const QueryCard = ({ query }) => {
               >
                 recommend
               </button>
-              <button className="btn text-lg bg-[#00989E] text-white hover:bg-red-500">
+              <button className="btn text-lg bg-[#00989E] text-white hover:bg-[#38B8BC]">
                 recommendations : {recommendationCount}
               </button>
             </div>

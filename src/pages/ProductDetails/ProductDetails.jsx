@@ -33,7 +33,7 @@ const ProductDetails = () => {
     axios
       .get(
         `
-http://localhost:5000/productDetails/${details.id}`
+https://assignment-11-server-xi-nine.vercel.app/productDetails/${details.id}`
       )
       .then((res) => {
         // console.log(res.data);

@@ -11,7 +11,7 @@ const Recommendations = () => {
     axios
       .get(
         `
-http://localhost:5000/forMe?email=${userEmail}`
+https://assignment-11-server-xi-nine.vercel.app/forMe?email=${userEmail}`
       )
       .then((res) => {
         // console.log(res.data);

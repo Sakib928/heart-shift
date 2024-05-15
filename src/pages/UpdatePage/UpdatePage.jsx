@@ -26,7 +26,7 @@ const UpdatePage = () => {
     axios
       .patch(
         `
-http://localhost:5000/updateProduct/${userID.id}`,
+https://assignment-11-server-xi-nine.vercel.app/updateProduct/${userID.id}`,
         query
       )
       .then((res) => {

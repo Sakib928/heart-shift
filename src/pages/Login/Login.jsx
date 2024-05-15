@@ -21,12 +21,12 @@ const Login = () => {
     const email = form.get("email");
     const password = form.get("password");
     userLogin(email, password)
-      .then((res) => {
-        const loggedUser = res.user;
-        console.log(loggedUser);
+      .then(() => {
+        // const loggedUser = res.user;
+        // console.log(loggedUser);
         const user = { email };
         axios
-          .post(`http://localhost:5000/jwt`, user, {
+          .post(`https://assignment-11-server-xi-nine.vercel.app/jwt`, user, {
             withCredentials: true,
           })
           .then((res) => {

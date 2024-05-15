@@ -10,7 +10,7 @@ const AllRecommendations = () => {
     axios
       .get(
         `
-http://localhost:5000/viewRecommendations/${get.id}`
+https://assignment-11-server-xi-nine.vercel.app/viewRecommendations/${get.id}`
       )
       .then((res) => {
         // console.log(res.data);
