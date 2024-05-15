@@ -8,7 +8,7 @@ const ProductDetails = () => {
   const details = useParams();
   //   console.log(details.id);
   const [product, setProduct] = useState([]);
-//   console.log(product);
+  //   console.log(product);
   const navigate = useNavigate();
 
   const handleViewRecs = () => {
@@ -32,7 +32,8 @@ const ProductDetails = () => {
   useEffect(() => {
     axios
       .get(
-        `https://assignment-11-server-xi-nine.vercel.app/productDetails/${details.id}`
+        `
+http://localhost:5000/productDetails/${details.id}`
       )
       .then((res) => {
         // console.log(res.data);

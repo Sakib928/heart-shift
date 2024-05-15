@@ -4,7 +4,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 const Navbar = () => {
-  const { user, setTheme, userLogout, loading } = useContext(AuthContext);
+  const { user, theme, setTheme, userLogout, loading } =
+    useContext(AuthContext);
   const handleTheme = (e) => {
     if (e.target.checked) {
       setTheme("dark");
@@ -78,7 +79,6 @@ const Navbar = () => {
           <Link
             to={"/"}
             rel="noopener noreferrer"
-            href="#"
             aria-label="Back to homepage"
             className="flex items-center p-2"
           >
@@ -92,7 +92,6 @@ const Navbar = () => {
               <NavLink
                 to={"/"}
                 rel="noopener noreferrer"
-                href="#"
                 className="flex items-center px-4 -mb-1 border-b-2"
               >
                 Home
@@ -102,7 +101,6 @@ const Navbar = () => {
               <NavLink
                 to={"/queries"}
                 rel="noopener noreferrer"
-                href="#"
                 className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
               >
                 Queries
@@ -115,7 +113,6 @@ const Navbar = () => {
                   <NavLink
                     to={"/recommendations"}
                     rel="noopener noreferrer"
-                    href="#"
                     className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
                   >
                     Recommendations
@@ -125,7 +122,6 @@ const Navbar = () => {
                   <NavLink
                     to={"/myQueries"}
                     rel="noopener noreferrer"
-                    href="#"
                     className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
                   >
                     My Queries
@@ -135,7 +131,6 @@ const Navbar = () => {
                   <NavLink
                     to={"/myRecommendations"}
                     rel="noopener noreferrer"
-                    href="#"
                     className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
                   >
                     My Recommendations
@@ -165,6 +160,7 @@ const Navbar = () => {
               <input
                 type="checkbox"
                 onChange={handleTheme}
+                checked={theme === "light" ? false : true}
                 value="synthwave"
                 className="toggle theme-controller"
               />
@@ -213,7 +209,6 @@ const Navbar = () => {
                 <NavLink
                   to={"/"}
                   rel="noopener noreferrer"
-                  href="#"
                   className="flex items-center px-4 -mb-1 border-b-2 dark:border- dark:text-violet-600 dark:border-violet-600"
                 >
                   Home
@@ -223,7 +218,6 @@ const Navbar = () => {
                 <NavLink
                   to={"/queries"}
                   rel="noopener noreferrer"
-                  href="#"
                   className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
                 >
                   Queries
@@ -233,7 +227,6 @@ const Navbar = () => {
                 <NavLink
                   to={"/recommendations"}
                   rel="noopener noreferrer"
-                  href="#"
                   className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
                 >
                   Recommendations
@@ -243,7 +236,6 @@ const Navbar = () => {
                 <NavLink
                   to={"/myQueries"}
                   rel="noopener noreferrer"
-                  href="#"
                   className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
                 >
                   My Queries
@@ -253,7 +245,6 @@ const Navbar = () => {
                 <NavLink
                   to={"/myRecommendations"}
                   rel="noopener noreferrer"
-                  href="#"
                   className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
                 >
                   My Recommendations

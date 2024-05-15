@@ -15,12 +15,10 @@ const Home = () => {
   const [loadedCards, setLoadedCards] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://assignment-11-server-xi-nine.vercel.app/allProducts")
-      .then((res) => {
-        // console.log(res.data);
-        setLoadedCards(res.data);
-      });
+    axios.get("http://localhost:5000/allProducts").then((res) => {
+      // console.log(res.data);
+      setLoadedCards(res.data);
+    });
   }, []);
 
   return (

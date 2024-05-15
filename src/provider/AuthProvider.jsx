@@ -9,6 +9,7 @@ import {
   updateProfile,
   GoogleAuthProvider,
 } from "firebase/auth";
+import axios from "axios";
 export const AuthContext = createContext();
 const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
@@ -60,9 +61,18 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      const userMail = user?.email;
+      const loggedUser = { email: userMail };
       if (user) {
+        axios.post(`http://localhost:5000/jwt`, loggedUser, {
+          withCredentials: true,
+        });
         setUser(user);
         setLoading(false);
+      } else {
+        axios.post(`http://localhost:5000/logout`, loggedUser, {
+          withCredentials: true,
+        });
       }
     });
     return () => unsubscribe;

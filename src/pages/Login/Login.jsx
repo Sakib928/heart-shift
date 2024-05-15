@@ -6,6 +6,7 @@ import { BiSolidHide } from "react-icons/bi";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 const Login = () => {
   const { userLogin, googleLogin } = useContext(AuthContext);
   const [passState, setPassState] = useState(false);
@@ -20,9 +21,20 @@ const Login = () => {
     const email = form.get("email");
     const password = form.get("password");
     userLogin(email, password)
-      .then(() => {
-        toast.success("Login Successful");
-        navigate("/");
+      .then((res) => {
+        const loggedUser = res.user;
+        console.log(loggedUser);
+        const user = { email };
+        axios
+          .post(`http://localhost:5000/jwt`, user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            if (res.data.success) {
+              toast.success("Login Successful");
+              navigate("/");
+            }
+          });
       })
       .catch((err) => {
         toast.error(err.message);

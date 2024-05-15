@@ -40,10 +40,7 @@ const RecommendForm = ({ product }) => {
     };
     // console.log(rProduct);
     axios
-      .post(
-        "https://assignment-11-server-xi-nine.vercel.app/recommendProduct",
-        rProduct
-      )
+      .post("http://localhost:5000/recommendProduct", rProduct)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

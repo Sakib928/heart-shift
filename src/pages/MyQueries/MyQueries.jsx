@@ -1,24 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
-import axios from "axios";
 import Lottie from "lottie-react";
 import noDataAnimation from "../../assets/images/nodata.json";
 import MyQuery from "./MyQuery";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyQueries = () => {
   const { user } = useContext(AuthContext);
   const [myQueries, setMyQueries] = useState([]);
   // console.log(myQueries);
+  const axiosSecure = useAxiosSecure();
   useEffect(() => {
-    axios
-      .get(
-        `https://assignment-11-server-xi-nine.vercel.app/myQueries/?email=${user.email}`
-      )
+    axiosSecure
+      .get(`http://localhost:5000/myQueries/?email=${user.email}`)
       .then((res) => {
         setMyQueries(res.data);
       });
-  }, [user.email, myQueries]);
+  }, [user.email, myQueries, axiosSecure]);
   const noData = (
     <>
       <Lottie

@@ -4,12 +4,13 @@ import { useParams } from "react-router-dom";
 
 const AllRecommendations = () => {
   const get = useParams();
-//   console.log(get.id);
+  //   console.log(get.id);
   const [allRecs, setAllRecs] = useState([]);
   useEffect(() => {
     axios
       .get(
-        `https://assignment-11-server-xi-nine.vercel.app/viewRecommendations/${get.id}`
+        `
+http://localhost:5000/viewRecommendations/${get.id}`
       )
       .then((res) => {
         // console.log(res.data);

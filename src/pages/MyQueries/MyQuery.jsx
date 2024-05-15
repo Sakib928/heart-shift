@@ -31,7 +31,8 @@ const MyQuery = ({ query, MyQueries, setMyQueries }) => {
       if (result.isConfirmed) {
         axios
           .delete(
-            `https://assignment-11-server-xi-nine.vercel.app/product/${id}`
+            `
+http://localhost:5000/product/${id}`
           )
           .then((res) => {
             if (res.data.deletedCount) {
