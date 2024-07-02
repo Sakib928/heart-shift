@@ -11,3 +11,14 @@ Live Link : https://a11-client-b9a9f.web.app
 - Add recommendation for alternative Products
 - Watch other peoples added products
 - Dark mode switching
+
+# Technologies Used : 
+## FrontEnd : 
+- html
+- css
+- javascript
+- react
+## Backend :
+- node.js
+- express.js
+- mongodb
