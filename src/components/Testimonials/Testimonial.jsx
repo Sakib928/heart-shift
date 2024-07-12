@@ -35,7 +35,7 @@ const Testimonial = () => {
           </div>
           <div className="flex flex-col items-center justify-center p-8 rounded-b-lg dark:bg-violet-600 dark:text-gray-50">
             <img
-              src="https://source.unsplash.com/50x50/?portrait?1"
+              src="https://picsum.photos/50/50"
               alt=""
               className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-8000 dark:bg-gray-300"
             />
@@ -73,7 +73,7 @@ const Testimonial = () => {
           </div>
           <div className="flex flex-col items-center justify-center p-8 rounded-b-lg dark:bg-violet-600 dark:text-gray-50">
             <img
-              src="https://source.unsplash.com/50x50/?portrait?2"
+              src="https://picsum.photos/50/50"
               alt=""
               className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full  dark:bg-gray-800"
             />
@@ -111,7 +111,7 @@ const Testimonial = () => {
           </div>
           <div className="flex flex-col items-center justify-center p-8 rounded-b-lg dark:bg-violet-600 dark:text-gray-50">
             <img
-              src="https://source.unsplash.com/50x50/?portrait?3"
+              src="https://picsum.photos/50/50"
               alt=""
               className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-8000 dark:bg-gray-300"
             />
@@ -149,7 +149,7 @@ const Testimonial = () => {
           </div>
           <div className="flex flex-col items-center justify-center p-8 rounded-b-lg dark:bg-violet-600 dark:text-gray-50">
             <img
-              src="https://source.unsplash.com/50x50/?portrait?4"
+              src="https://picsum.photos/50/50"
               alt=""
               className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-8000 dark:bg-gray-300"
             />

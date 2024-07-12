@@ -52,7 +52,7 @@ const AddQuery = () => {
   };
 
   return (
-    <section className="p-6 dark:bg-gray-100 dark:text-gray-900">
+    <section className="p-6 dark:bg-gray-800 dark:text-slate-400">
       <Toaster />
       <form
         onSubmit={handleAddQuery}
@@ -60,7 +60,7 @@ const AddQuery = () => {
         action=""
         className="container flex flex-col mx-auto space-y-12"
       >
-        <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-50">
+        <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-800">
           <div className="space-y-2 col-span-full lg:col-span-1">
             <p className="font-bold text-3xl ">Add Product</p>
             <p className="text-sm">

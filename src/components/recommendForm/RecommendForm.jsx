@@ -45,7 +45,7 @@ const RecommendForm = ({ product }) => {
         rProduct
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
           toast.success("added recommendation");
           form.reset();

@@ -19,7 +19,7 @@ const QueryCard = ({ query }) => {
     <div>
       <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 mx-auto mt-8 h-full">
         <img
-          className="object-cover w-full h-64 "
+          className="object-contain w-full h-64 "
           src={productImage}
           alt="Article"
         />

@@ -15,7 +15,7 @@ const RecentQuery = ({ card }) => {
     <div>
       <div className="w-full max-w-lg overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 mx-auto h-full">
         <img
-          className="object-cover object-center w-full h-56"
+          className="object-contain object-center w-full h-56"
           src={productImage}
           alt="avatar"
         />

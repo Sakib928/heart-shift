@@ -5,6 +5,7 @@ import slide3 from "../../../assets/images/drink.jpg";
 import slide4 from "../../../assets/images/electronics.jpg";
 
 import { Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -22,7 +23,7 @@ const Banner = () => {
           better.
         </p>
         <button className="btn bg-[#00989E] border-none text-white hover:bg-[#2BBFC3]">
-          View Products
+          <Link to={"/queries"}>View Products</Link>
         </button>
       </div>
       <Swiper

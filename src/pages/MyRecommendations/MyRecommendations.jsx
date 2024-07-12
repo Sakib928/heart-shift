@@ -8,7 +8,7 @@ const MyRecommendations = () => {
   const { user } = useContext(AuthContext);
   const matchEmail = user.email;
   const [myRecs, setMyRecs] = useState([]);
-  console.log(myRecs);
+  // console.log(myRecs);
   useEffect(() => {
     axios
       .get(

@@ -24,22 +24,17 @@ const Navbar = () => {
   };
 
   const noUserNav = (
-    <>
+    <div className="hidden lg:block">
       <Link to={"/login"}>
         <button className="btn btn-outline text-white ml-6">Sign in</button>
       </Link>
-      <Link to={"/register"}>
-        <button className="btn btn-outline text-white font-semibold dark:bg-violet-600 dark:text-gray-50 ml-6">
-          Sign up
-        </button>
-      </Link>
-    </>
+    </div>
   );
 
   const userNav = (
     <>
       <div>
-        <div className="dropdown dropdown-end">
+        <div className="dropdown dropdown-end z-[100]">
           <div
             tabIndex={0}
             role="button"
@@ -72,7 +67,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="sticky top-0 bg-[#00989E] dark:bg-gray-800 font-bold text-white md:py-3 z-50">
+    <nav className="lg:sticky top-0 bg-[#00989E] dark:bg-gray-800 font-bold text-white md:py-3 z-50">
       <Toaster />
       <header className="p-4 dark:bg-gray-800 dark:text-white ">
         <div className="container flex justify-between h-16 mx-auto">
@@ -141,7 +136,7 @@ const Navbar = () => {
               ""
             )}
           </ul>
-          <div className="items-center flex-shrink-0 flex">
+          <div className="items-center justify-end flex-shrink-0 flex">
             <label className="flex cursor-pointer gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -179,78 +174,95 @@ const Navbar = () => {
               </svg>
             </label>
             <div>{!loading && user ? userNav : noUserNav}</div>
-          </div>
-          <div className="dropdown dropdown-end lg:hidden">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn m-1 bg-transparent text-white border-none"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="white"
-                className="w-6 h-6 dark:text-gray-800"
+            <div className="dropdown dropdown-end lg:hidden z-[100]">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn m-1 bg-transparent text-white border-none"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="white"
+                  className="w-6 h-6 dark:text-gray-800"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  ></path>
+                </svg>
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-black dark:text-white text-end"
+              >
+                <li className="flex">
+                  <NavLink
+                    to={"/"}
+                    rel="noopener noreferrer"
+                    className="flex items-center px-4 -mb-1 border-b-2 dark:border- dark:text-violet-600 dark:border-violet-600"
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li className="flex">
+                  <NavLink
+                    to={"/queries"}
+                    rel="noopener noreferrer"
+                    className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                  >
+                    Queries
+                  </NavLink>
+                </li>
+                {user && (
+                  <li className="flex">
+                    <NavLink
+                      to={"/recommendations"}
+                      rel="noopener noreferrer"
+                      className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    >
+                      Recommendations
+                    </NavLink>
+                  </li>
+                )}
+                {user && (
+                  <li className="flex">
+                    <NavLink
+                      to={"/myQueries"}
+                      rel="noopener noreferrer"
+                      className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    >
+                      My Queries
+                    </NavLink>
+                  </li>
+                )}
+                {user && (
+                  <li className="flex">
+                    <NavLink
+                      to={"/myRecommendations"}
+                      rel="noopener noreferrer"
+                      className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    >
+                      My Recommendations
+                    </NavLink>
+                  </li>
+                )}
+                {!user && (
+                  <li className="flex">
+                    <NavLink
+                      to={"/login"}
+                      rel="noopener noreferrer"
+                      className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
+                    >
+                      Login
+                    </NavLink>
+                  </li>
+                )}
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-black dark:text-white"
-            >
-              <li className="flex">
-                <NavLink
-                  to={"/"}
-                  rel="noopener noreferrer"
-                  className="flex items-center px-4 -mb-1 border-b-2 dark:border- dark:text-violet-600 dark:border-violet-600"
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li className="flex">
-                <NavLink
-                  to={"/queries"}
-                  rel="noopener noreferrer"
-                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                >
-                  Queries
-                </NavLink>
-              </li>
-              <li className="flex">
-                <NavLink
-                  to={"/recommendations"}
-                  rel="noopener noreferrer"
-                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                >
-                  Recommendations
-                </NavLink>
-              </li>
-              <li className="flex">
-                <NavLink
-                  to={"/myQueries"}
-                  rel="noopener noreferrer"
-                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                >
-                  My Queries
-                </NavLink>
-              </li>
-              <li className="flex">
-                <NavLink
-                  to={"/myRecommendations"}
-                  rel="noopener noreferrer"
-                  className="flex items-center px-4 -mb-1 border-b-2 dark:border-"
-                >
-                  My Recommendations
-                </NavLink>
-              </li>
-            </ul>
           </div>
         </div>
       </header>
