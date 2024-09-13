@@ -53,14 +53,14 @@ const Login = () => {
   };
 
   return (
-    <div className="hero bg-base-200">
+    <div className="">
       <Toaster />
-      <div className="hero-content flex-col lg:flex-row">
+      <div className="hero-content flex-col md:flex-row">
         <Lottie
           animationData={loginAnimation}
-          className="h-[400px] md:h-[450px] w-[400px] md:w-[450px]"
+          className="h-[400px] md:h-[450px] md:w-[450px]"
         ></Lottie>
-        <div className="hero  bg-base-200">
+        <div className="">
           <div className="hero-content flex-col ">
             <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
               <h1 className="font-bold text-4xl text-center pt-4">Login </h1>
